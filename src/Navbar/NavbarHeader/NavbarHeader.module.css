@@ -1,0 +1,12 @@
+header {
+  display: flex;
+  justify-content: center;
+}
+
+header > section {
+  width: 60%;
+  /* height: 80%; */
+
+  display: flex;
+  justify-content: space-evenly;
+}

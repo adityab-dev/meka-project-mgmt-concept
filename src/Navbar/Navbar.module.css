@@ -1,0 +1,11 @@
+.navbar {
+  box-sizing: border-box;
+
+  border: solid blue 2px;
+
+  width: 15vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
