@@ -1,4 +1,8 @@
 .header {
+  margin-top: 0.5rem;
+  margin-left: 1.25rem;
+  margin-right: 4.5rem;
+
   display: flex;
   flex-direction: column;
 
@@ -6,6 +10,8 @@
 }
 
 .headerTop {
+  margin-top: 1rem;
+
   width: 100%;
   height: 50%;
 
@@ -17,6 +23,7 @@
 
 .headerBottom {
   height: 50%;
+  padding-bottom: 1rem;
 
   display: flex;
   justify-content: space-between;
@@ -27,4 +34,45 @@
 .headerBottom > div:first-child {
   font-size: 2rem;
   font-weight: 600;
+}
+
+.searchbar {
+  display: flex;
+  gap: 10px;
+  color: #707070;
+}
+
+.search_image_container {
+  font-size: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.search_text {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.toggles_container {
+  font-size: 1.25rem;
+  width: 15%;
+}
+
+.toggles {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text_right {
+  display: flex;
+  align-items: center;
+}
+
+.text_left {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown_container {
+  margin-top: 5px;
 }

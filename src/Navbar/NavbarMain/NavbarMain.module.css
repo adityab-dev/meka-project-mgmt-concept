@@ -1,5 +1,13 @@
 .main {
   color: #707070;
+  height: 100%;
+}
+
+.main_content_container {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  justify-content: space-evenly;
 }
 
 .navbarCategoryContainer {
@@ -11,10 +19,17 @@
   width: 80%;
   display: flex;
   font-size: 20px;
-  justify-content: space-evenly;
+  margin-left: 1rem;
 }
 
 .navbarCategory > div:first-child {
   display: flex;
   align-items: center;
+}
+
+.navbar_main_icon {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: flex-end;
+  margin-right: 1rem;
 }

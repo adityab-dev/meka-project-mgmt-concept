@@ -1,14 +1,13 @@
 import "./App.css";
+
 import Navbar from "./Navbar/Navbar";
 import Content from "./Content/Content";
-import Container from "./Container";
 
 function App() {
   return (
     <div className="app">
-      {/* <Navbar />
-      <Content /> */}
-      <Container />
+      <Navbar />
+      <Content />
     </div>
   );
 }

@@ -1,11 +1,27 @@
 .navbar {
   box-sizing: border-box;
-
-  border: solid blue 2px;
-
   width: 15vw;
   height: 100vh;
 
   display: flex;
   flex-direction: column;
+
+  justify-content: space-between;
+  box-shadow: 10px 0 13px -2px rgb(219, 216, 216);
+}
+
+.navbar_upper {
+  flex-grow: 1;
+}
+
+.navbar_header {
+  height: 20%;
+}
+
+.navbar_main {
+  height: 80%;
+}
+
+.navbar_bottom {
+  flex-grow: 1;
 }

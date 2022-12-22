@@ -34,6 +34,7 @@
 }
 
 .main_header {
+  padding: 1rem 0;
   display: grid;
 
   width: 90%;
@@ -47,6 +48,7 @@
 }
 
 .header_content_right {
+  font-size: 1.25rem;
   grid-area: icons;
 
   display: flex;

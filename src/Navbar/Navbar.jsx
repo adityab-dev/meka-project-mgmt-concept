@@ -9,9 +9,17 @@ import NavbarMain from "./NavbarMain/NavbarMain";
 function Navbar() {
   return (
     <div className={styles.navbar}>
-      <NavbarHeader />
-      <NavbarMain />
-      <NavbarFooter />
+      <div className={styles.navbar_upper}>
+        <div className={styles.navbar_header}>
+          <NavbarHeader />
+        </div>
+        <div className={styles.navbar_main}>
+          <NavbarMain />
+        </div>
+      </div>
+      <div className={styles.navbar_bottom}>
+        <NavbarFooter />
+      </div>
     </div>
   );
 }

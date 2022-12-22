@@ -6,7 +6,7 @@ import { FiLogOut } from "react-icons/fi";
 
 function NavbarFooter() {
   return (
-    <footer>
+    <footer className={styles.footer}>
       <div className={styles.logoutContainer}>
         <div className={styles.logoutContent}>
           <div className={styles.logoContainer}>

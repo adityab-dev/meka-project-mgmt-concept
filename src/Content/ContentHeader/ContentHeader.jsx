@@ -11,23 +11,37 @@ function ContentHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.headerTop}>
-        <div>
-          <div>
+        <div className={styles.searchbar}>
+          <div className={styles.search_image_container}>
             <BsSearch />
-            Search
           </div>
+          <div className={styles.search_text}>Search</div>
         </div>
-        <div>
-          <BsBell />
-          <BsQuestionCircle />
-          <img alt="head-img" src={profile_pic} />
+
+        <div className={styles.toggles_container}>
+          <div className={styles.toggles}>
+            <div className={styles.bell}>
+              <BsBell />
+            </div>
+            <div className={styles.question}>
+              <BsQuestionCircle />
+            </div>
+            <div className={styles.profile_pic}>
+              <img alt="head-img" src={profile_pic} />
+            </div>
+          </div>
         </div>
       </div>
 
       <div className={styles.headerBottom}>
-        <div>Board</div>
-        <div>
-          This Week <IoIosArrowDown />
+        <div className={styles.text_left}>
+          <div>Board</div>
+        </div>
+        <div className={styles.text_right}>
+          <div>This Week</div>
+          <div className={styles.dropdown_container}>
+            <IoIosArrowDown />
+          </div>
         </div>
       </div>
     </header>

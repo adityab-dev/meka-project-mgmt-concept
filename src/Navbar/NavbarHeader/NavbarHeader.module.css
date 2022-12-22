@@ -3,10 +3,24 @@ header {
   justify-content: center;
 }
 
-header > section {
-  width: 60%;
-  /* height: 80%; */
+.section {
+  width: 80%;
 
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+}
+
+section > div {
+  font-weight: bold;
+}
+
+.heading_container {
+  flex-grow: 4;
+}
+
+.image_container {
+  flex-grow: 2;
 }

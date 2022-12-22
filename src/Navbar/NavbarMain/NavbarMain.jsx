@@ -10,33 +10,40 @@ import { MdOutlineSpaceDashboard } from "react-icons/md";
 function NavbarMain() {
   return (
     <main className={styles.main}>
-      <div className={styles.navbarCategoryContainer}>
-        <div className={styles.navbarCategory}>
-          <div>
-            <RxDashboard />
+      <div className={styles.main_content_container}>
+        <div className={styles.navbarCategoryContainer}>
+          <div className={styles.navbarCategory}>
+            <div className={styles.navbar_main_icon}>
+              <RxDashboard />
+            </div>
+            <div>Dashboard</div>
           </div>
-          <div>Heading</div>
         </div>
-      </div>
 
-      <div className={styles.navbarCategoryContainer}>
-        <div className={styles.navbarCategory}>
-          <MdOutlineSpaceDashboard />
-          <div>Heading</div>
+        <div className={styles.navbarCategoryContainer}>
+          <div className={styles.navbarCategory}>
+            <div className={styles.navbar_main_icon}>
+              <MdOutlineSpaceDashboard />
+            </div>
+            <div>Board</div>
+          </div>
         </div>
-      </div>
 
-      <div className={styles.navbarCategoryContainer}>
-        <div className={styles.navbarCategory}>
-          <FiDatabase />
-          <div>Heading</div>
+        <div className={styles.navbarCategoryContainer}>
+          <div className={styles.navbarCategory}>
+            <div className={styles.navbar_main_icon}>
+              <FiDatabase />
+            </div>
+            <div>Analytics</div>
+          </div>
         </div>
-      </div>
-
-      <div className={styles.navbarCategoryContainer}>
-        <div className={styles.navbarCategory}>
-          <SlSettings />
-          <div>Heading</div>
+        <div className={styles.navbarCategoryContainer}>
+          <div className={styles.navbarCategory}>
+            <div className={styles.navbar_main_icon}>
+              <SlSettings />
+            </div>
+            <div>Settings</div>
+          </div>
         </div>
       </div>
     </main>
