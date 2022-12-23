@@ -1,9 +1,19 @@
 .content {
-  box-sizing: border-box;
-
   width: 90%;
   height: 100vh;
 
   display: flex;
   flex-direction: column;
+}
+
+.content_header {
+  height: 20vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content_main {
+  flex-grow: 1;
 }

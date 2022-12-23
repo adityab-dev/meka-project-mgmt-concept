@@ -11,7 +11,10 @@ function ContentMain() {
   return (
     <main className={styles.main}>
       <ContainerColumn colHeaderTitle={"To Do"} dataArr={todos} />
-      <ContainerColumn colHeaderTitle={"In progress"} dataArr={inProgressItems} />
+      <ContainerColumn
+        colHeaderTitle={"In progress"}
+        dataArr={inProgressItems}
+      />
       <ContainerColumn colHeaderTitle={"Done"} dataArr={doneItems} />
     </main>
   );
