@@ -6,18 +6,11 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 import Dot from "./Dot/Dot";
 import Circles from "../../../Circles/Circles";
 
-function Container({
-  dotColor,
-  headerText,
-  heading,
-  mainText,
-  circleNames,
-  circleColors,
-}) {
+const Container = ({ dotColor, headerText, heading, mainText, circleNames, circleColors }) => {
   const circlesList = circleNames.map((circleName, index) => {
     return (
-      <div className={styles.circles_component_container}>
-        <Circles circleName={circleName} circleColor={circleColors[index]} />{" "}
+      <div className={styles.circles_component_container} key={index}>
+        <Circles circleName={circleName} circleColor={circleColors[index]} />
       </div>
     );
   });
@@ -32,9 +25,7 @@ function Container({
                 <Dot color={dotColor} />
               </div>
               <div className={styles.header_text_container}>
-                <div className={styles.header_text}>
-                  {headerText.toUpperCase()}
-                </div>
+                <div className={styles.header_text}>{headerText.toUpperCase()}</div>
               </div>
             </div>
             <div className={styles.content_header_right}>
@@ -54,6 +45,6 @@ function Container({
   );
 
   return content;
-}
+};
 
 export default Container;
