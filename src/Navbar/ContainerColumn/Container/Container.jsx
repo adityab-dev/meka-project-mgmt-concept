@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./Container.module.css";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { IoMdClose } from "react-icons/io";
 import Dot from "./Dot/Dot";
 import Circles from "../../../Circles/Circles";
 import { Draggable } from "react-beautiful-dnd";
+import ContentMainContext from "../../../store/ContentMain-context";
 
 const Container = (props) => {
-  const { card, index } = props;
+  const cardsCtx = useContext(ContentMainContext);
+
+  const { card, index, column_id } = props;
 
   const circlesList = card.circle_names.map((circle_name, index) => {
     return (
@@ -21,7 +24,7 @@ const Container = (props) => {
   });
 
   const content = (
-    <Draggable draggableId={card.id} index={index}>
+    <Draggable draggableId={card.id.toString()} index={index}>
       {(provided) => (
         <div
           className={styles.content_container_flex}
@@ -43,7 +46,16 @@ const Container = (props) => {
                   </div>
                 </div>
                 <div className={styles.content_header_right}>
-                  <IoMdClose />
+                  <div
+                    onClick={() =>
+                      cardsCtx.cardRemoveHandler({
+                        card_id: card.id,
+                        column_id,
+                      })
+                    }
+                  >
+                    <IoMdClose />
+                  </div>
                   <BiDotsHorizontalRounded />
                 </div>
               </div>

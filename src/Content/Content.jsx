@@ -1,4 +1,5 @@
 import React from "react";
+import ContentMainProvider from "../store/ContentMainProvider";
 
 import styles from "./Content.module.css";
 
@@ -12,7 +13,9 @@ function Content() {
         <ContentHeader />
       </div>
       <div className={styles.content_main}>
-        <ContentMain />
+        <ContentMainProvider>
+          <ContentMain />
+        </ContentMainProvider>
       </div>
     </div>
   );

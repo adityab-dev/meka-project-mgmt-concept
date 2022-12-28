@@ -1,0 +1,56 @@
+.formContainer {
+  background: white;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  margin-bottom: 10px;
+}
+
+form {
+  width: 90%;
+}
+
+form input:focus {
+  outline: none;
+}
+
+form > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form button {
+  background: rgb(66, 66, 114);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+}
+
+form label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.formHeader {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.25rem;
+  padding-bottom: 0.5rem;
+}
+.formBody {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

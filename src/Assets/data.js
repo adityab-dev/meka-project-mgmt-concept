@@ -1,7 +1,7 @@
 const init_data = {
   cards: {
-    "card-1": {
-      id: "card-1",
+    1: {
+      id: 1,
       dot_color: "green",
       header_text: "design systems",
       heading: "Hero Section",
@@ -10,8 +10,8 @@ const init_data = {
       circle_colors: ["green"],
       circle_names: ["AK"],
     },
-    "card-2": {
-      id: "card-2",
+    2: {
+      id: 2,
       dot_color: "blue",
       header_text: "typograpgy",
       heading: "Typography Change",
@@ -20,8 +20,8 @@ const init_data = {
       circle_names: ["ML"],
       circle_colors: ["pink"],
     },
-    "card-3": {
-      id: "card-3",
+    3: {
+      id: 3,
       dot_color: "red",
       header_text: "development",
       heading: "Implement design screens",
@@ -30,8 +30,8 @@ const init_data = {
       circle_names: ["VH", "LK"],
       circle_colors: ["darkblue", "green"],
     },
-    "card-4": {
-      id: "card-4",
+    4: {
+      id: 4,
       dot_color: "red",
       header_text: "development",
       heading: "Fix bugs in the CSS code",
@@ -40,8 +40,8 @@ const init_data = {
       circle_names: ["HU", "NL"],
       circle_colors: ["pink", "orange"],
     },
-    "card-5": {
-      id: "card-5",
+    5: {
+      id: 5,
       dot_color: "blue",
       header_text: "typography",
       heading: "Proofread final text",
@@ -50,8 +50,8 @@ const init_data = {
       circle_names: ["AG"],
       circle_colors: ["orange"],
     },
-    "card-6": {
-      id: "card-6",
+    6: {
+      id: 6,
       dot_color: "green",
       header_text: "design systems",
       heading: "Responsive Design",
@@ -65,17 +65,17 @@ const init_data = {
     "column-1": {
       id: "column-1",
       title: "To Do",
-      card_ids: ["card-1", "card-2"],
+      card_ids: [1, 2],
     },
     "column-2": {
       id: "column-2",
       title: "In Progress",
-      card_ids: ["card-3"],
+      card_ids: [3],
     },
     "column-3": {
       id: "column-3",
       title: "Done",
-      card_ids: ["card-4", "card-5", "card-6"],
+      card_ids: [4, 5, 6],
     },
   },
   columns_order: ["column-1", "column-2", "column-3"],
