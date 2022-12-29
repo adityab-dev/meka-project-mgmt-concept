@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styles from "./ContentMain.module.css";
 import ContainerColumn from "../../Navbar/ContainerColumn/ContainerColumn";
 import { DragDropContext } from "react-beautiful-dnd";
-import ContentMainContext from "../../store/ContentMain-context";
+import ContentMainContext from "../../store/ContentMainContext/ContentMain-context";
 
 function ContentMain() {
   const cardsCtx = useContext(ContentMainContext);

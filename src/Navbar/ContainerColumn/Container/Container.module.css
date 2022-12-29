@@ -76,6 +76,10 @@ p {
   display: flex;
 }
 
-.circles_component_container:nth-of-type(2n) {
+.circles_component_container {
   margin-left: -0.5rem;
+}
+
+.close {
+  cursor: pointer;
 }

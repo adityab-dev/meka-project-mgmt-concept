@@ -2,7 +2,7 @@ import ContentMainContext from "./ContentMain-context";
 
 import React, { useReducer } from "react";
 
-import init_data from "../Assets/data";
+import init_data from "../../Assets/data";
 
 const defaultCardsState = init_data;
 
@@ -46,13 +46,13 @@ const CardsReducer = (state, action) => {
   if (action.type === "DRAGGING") {
     const { source, destination, draggableId } = action.payload;
 
-    if (!destination) return;
+    if (!destination) return state;
 
     if (
       source.index === destination.index &&
       source.droppableId === destination.droppableId
     )
-      return;
+      return state;
 
     const start = state.columns[source.droppableId];
     const finish = state.columns[destination.droppableId];

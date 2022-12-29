@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
-import ContentMainContext from "../../../store/ContentMain-context";
+import React, { useContext, useState, useRef } from "react";
+import ContentMainContext from "../../../store/ContentMainContext/ContentMain-context";
 import { IoMdClose } from "react-icons/io";
-
+import { BsPlus } from "react-icons/bs";
 import styles from "./Form.module.css";
 
 function Form(props) {
@@ -11,21 +11,17 @@ function Form(props) {
 
   const { cardSubmitHandler } = cardsCtx;
 
-  const [tag, setTag] = useState("");
-  const [heading, setHeading] = useState("");
-  const [description, setDescription] = useState("");
-  const [names, setNames] = useState("");
+  const [names, setNames] = useState([]);
 
-  const onTagChangeHandler = (event) => setTag(event.target.value);
+  const nameInputRef = useRef();
+  const tagInputRef = useRef();
+  const descriptionInputRef = useRef();
+  const headingInputRef = useRef();
 
-  const onHeadingChangeHandler = (event) =>
-    setHeading(event.target.value);
-
-  const onDescriptionChangeHandler = (event) =>
-    setDescription(event.target.value);
-
-  const onNamesChangeHandler = (event) =>
-    setNames(event.target.value);
+  const onAddHandler = () => {
+    setNames([...names, nameInputRef.current.value]);
+    nameInputRef.current.value = "";
+  };
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -42,39 +38,72 @@ function Form(props) {
     }
 
     const dot_color = randomColorGenerator();
-    const circle_color = randomColorGenerator();
 
-    const nameInitials = names;
+    setNames((prevState) => {
+      const newState = [...prevState].push(
+        nameInputRef.current.value
+      );
+      return newState;
+    });
 
-    function getInitiials(name) {
-      const nameArr = [...name];
-      const len = nameArr.length;
-      const itemsToRemove = len - 1;
-      nameArr.splice(0, itemsToRemove);
-      const capital = nameArr[0].toUpperCase();
-      nameArr[0] = capital;
-      return nameArr;
+    function getInitials(name) {
+      let firstLetter = "";
+      let secondLetter = "";
+
+      const indivisualElements = name.split(" ");
+
+      const indivisualNameFilter = (element) => {
+        if (element.length) {
+          return true;
+        }
+      };
+
+      const indivisualNames = indivisualElements.filter((el) => {
+        return indivisualNameFilter(el);
+      });
+
+      const len = indivisualNames.length;
+
+      const firstName = indivisualNames[0];
+      firstLetter = [...firstName][0];
+
+      if (len === 1) {
+        return firstLetter;
+      }
+
+      if (len > 1) {
+        const [secondName] = indivisualNames.splice(-1, 1);
+        secondLetter = [...secondName][0];
+
+        return firstLetter + secondLetter;
+      }
     }
 
-    const circle_name = getInitiials(nameInitials);
+    const nameInitialsArr = [
+      ...names,
+      nameInputRef.current.value,
+    ].map((name) => getInitials(name));
 
-    console.log(circle_name);
+    const colors = [...names, nameInputRef.current.value].map(() =>
+      randomColorGenerator()
+    );
 
     const formData = {
       id,
-      header_text: tag,
-      heading,
-      main_text: description,
-      circle_names: circle_name,
+      header_text: tagInputRef.current.value,
+      heading: headingInputRef.current.value,
+      main_text: descriptionInputRef.current.value,
+      circle_names: nameInitialsArr,
       column_id: column.id,
       dot_color,
-      circle_colors: [circle_color],
+      circle_colors: colors,
     };
 
-    setTag("");
-    setDescription("");
-    setHeading("");
-    setNames("");
+    tagInputRef.current.value = "";
+    descriptionInputRef.current.value = "";
+    headingInputRef.current.value = "";
+
+    nameInputRef.current.value = "";
 
     onClose();
     cardSubmitHandler(formData);
@@ -89,22 +118,12 @@ function Form(props) {
         <form onSubmit={onSubmit}>
           <div>
             <label htmlFor="tag">Tag</label>
-            <input
-              type="text"
-              id="tag"
-              onChange={onTagChangeHandler}
-              value={tag}
-            />
+            <input type="text" id="tag" ref={tagInputRef} />
           </div>
 
           <div>
             <label htmlFor="heading">Heading</label>
-            <input
-              type="text"
-              id="heading"
-              onChange={onHeadingChangeHandler}
-              value={heading}
-            />
+            <input type="text" id="heading" ref={headingInputRef} />
           </div>
 
           <div>
@@ -112,22 +131,34 @@ function Form(props) {
             <input
               type="text"
               id="description"
-              onChange={onDescriptionChangeHandler}
-              value={description}
+              ref={descriptionInputRef}
             />
           </div>
 
-          <div>
-            <label htmlFor="names">Names</label>
-            <input
-              type="text"
-              id="names"
-              onChange={onNamesChangeHandler}
-              value={names}
-            />
+          <div className={styles.namesInputContainer}>
+            <div className={styles.namesLabelContainer}>
+              <label htmlFor="names">Names</label>
+            </div>
+            <div className={styles.namesInputRightContentContainer}>
+              <div className={styles.namesInputRightContent}>
+                <input type="text" id="names" ref={nameInputRef} />
+                <div
+                  className={styles.bsPlusContainer}
+                  onClick={onAddHandler}
+                >
+                  <BsPlus />
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className={styles.buttonContainer}>
+            <button
+              type="button"
+              onClick={() => console.log("names", names)}
+            >
+              name array
+            </button>
             <button type="submit">Add</button>
           </div>
         </form>

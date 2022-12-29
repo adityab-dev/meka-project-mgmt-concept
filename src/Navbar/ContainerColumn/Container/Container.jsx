@@ -5,7 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import Dot from "./Dot/Dot";
 import Circles from "../../../Circles/Circles";
 import { Draggable } from "react-beautiful-dnd";
-import ContentMainContext from "../../../store/ContentMain-context";
+import ContentMainContext from "../../../store/ContentMainContext/ContentMain-context";
 
 const Container = (props) => {
   const cardsCtx = useContext(ContentMainContext);
@@ -29,7 +29,6 @@ const Container = (props) => {
         <div
           className={styles.content_container_flex}
           ref={provided.innerRef}
-          {...provided.dragHandleProps}
           {...provided.draggableProps}
         >
           <div className={styles.content_container_center}>
@@ -47,6 +46,7 @@ const Container = (props) => {
                 </div>
                 <div className={styles.content_header_right}>
                   <div
+                    className={styles.close}
                     onClick={() =>
                       cardsCtx.cardRemoveHandler({
                         card_id: card.id,
@@ -64,7 +64,7 @@ const Container = (props) => {
                 <h3>{card.heading}</h3>
               </div>
 
-              <p>{card.main_text}</p>
+              <p {...provided.dragHandleProps}>{card.main_text}</p>
               <div className={styles.circles}>{circlesList}</div>
             </div>
           </div>

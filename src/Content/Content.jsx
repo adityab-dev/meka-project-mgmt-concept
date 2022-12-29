@@ -1,5 +1,5 @@
 import React from "react";
-import ContentMainProvider from "../store/ContentMainProvider";
+import ContentMainProvider from "../store/ContentMainContext/ContentMainProvider";
 
 import styles from "./Content.module.css";
 

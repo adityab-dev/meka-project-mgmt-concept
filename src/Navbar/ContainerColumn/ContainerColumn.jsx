@@ -5,13 +5,14 @@ import { FiPlus } from "react-icons/fi";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { Droppable } from "react-beautiful-dnd";
 import Form from "./Form/Form";
+// import FormContextProvider from "../../store/FormContext/FormContextProvider";
 
 function ContainerColumn(props) {
   const { column, cards } = props;
 
   const [showForm, setShowForm] = useState(false);
 
-  const onCloseHandler = () => setShowForm(false);
+  const closeHandler = () => setShowForm(false);
 
   const content = (
     <div className={styles.content_col_container}>
@@ -23,7 +24,10 @@ function ContainerColumn(props) {
             </div>
           </div>
           <div className={styles.header_content_right}>
-            <div onClick={() => setShowForm(true)}>
+            <div
+              className={styles.pointerOnPlus}
+              onClick={() => setShowForm(true)}
+            >
               <FiPlus />
             </div>
 
@@ -31,9 +35,7 @@ function ContainerColumn(props) {
           </div>
         </div>
 
-        {showForm && (
-          <Form column={column} onClose={onCloseHandler} />
-        )}
+        {showForm && <Form column={column} onClose={closeHandler} />}
 
         <Droppable droppableId={column.id}>
           {(provided) => (
