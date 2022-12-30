@@ -55,6 +55,7 @@
 
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 /* content_container_flex is outside div to justify-content: center
@@ -113,4 +114,5 @@
 
 .pointerOnPlus {
   cursor: pointer;
+  margin-right: 1rem;
 }

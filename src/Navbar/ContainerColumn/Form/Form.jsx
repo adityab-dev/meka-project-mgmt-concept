@@ -153,12 +153,6 @@ function Form(props) {
           </div>
 
           <div className={styles.buttonContainer}>
-            <button
-              type="button"
-              onClick={() => console.log("names", names)}
-            >
-              name array
-            </button>
             <button type="submit">Add</button>
           </div>
         </form>

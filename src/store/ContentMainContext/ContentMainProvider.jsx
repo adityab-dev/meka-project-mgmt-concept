@@ -44,7 +44,20 @@ const CardsReducer = (state, action) => {
   }
 
   if (action.type === "DRAGGING") {
-    const { source, destination, draggableId } = action.payload;
+    const { source, destination, draggableId, type } = action.payload;
+
+    if (type === "column") {
+      const new_columns_order = Array.from(state.columns_order);
+      new_columns_order.splice(source.index, 1);
+      new_columns_order.splice(destination.index, 0, draggableId);
+
+      const newState = {
+        ...state,
+        columns_order: new_columns_order,
+      };
+
+      return newState;
+    }
 
     if (!destination) return state;
 
