@@ -34,11 +34,11 @@ function ContentMain() {
                   column={column}
                   cards={cards}
                   index={index}
-                  // onCardSubmit={cardSubmitHandler}
                 />
               );
             })}
             {provided.placeholder}
+            <button>Add Column</button>
           </main>
         )}
       </Droppable>
