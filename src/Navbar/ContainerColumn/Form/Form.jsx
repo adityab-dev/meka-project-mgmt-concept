@@ -13,6 +13,11 @@ function Form(props) {
 
   const [names, setNames] = useState([]);
 
+  const [heading, setHeading] = useState("");
+
+  const headingChangeHandler = (event) =>
+    setHeading(event.target.value);
+
   const nameInputRef = useRef();
   const tagInputRef = useRef();
   const descriptionInputRef = useRef();
@@ -47,6 +52,8 @@ function Form(props) {
     });
 
     function getInitials(name) {
+      if (!name.length) return;
+
       let firstLetter = "";
       let secondLetter = "";
 
@@ -123,7 +130,12 @@ function Form(props) {
 
           <div>
             <label htmlFor="heading">Heading</label>
-            <input type="text" id="heading" ref={headingInputRef} />
+            <input
+              type="text"
+              id="heading"
+              ref={headingInputRef}
+              onChange={headingChangeHandler}
+            />
           </div>
 
           <div>
@@ -153,7 +165,20 @@ function Form(props) {
           </div>
 
           <div className={styles.buttonContainer}>
-            <button type="submit">Add</button>
+            <button
+              type="submit"
+              className={
+                styles[
+                  `${
+                    !heading.length
+                      ? "buttonDisabled"
+                      : "buttonEnabled"
+                  }`
+                ]
+              }
+            >
+              Add
+            </button>
           </div>
         </form>
       </div>

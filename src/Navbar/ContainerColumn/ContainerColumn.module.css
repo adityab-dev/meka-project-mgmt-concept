@@ -116,3 +116,7 @@
   cursor: pointer;
   margin-right: 1rem;
 }
+
+.columnClose {
+  cursor: pointer;
+}

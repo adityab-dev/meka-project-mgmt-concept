@@ -28,6 +28,16 @@ form > div {
   align-items: center;
 }
 
+.buttonDisabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  background: rgb(180, 166, 166);
+}
+
+.bottonEnabled {
+  background: rgb(93, 93, 156);
+}
+
 form button {
   background: rgb(66, 66, 114);
   color: white;

@@ -77,6 +77,11 @@ const init_data = {
       title: "Done",
       card_ids: [4, 5, 6],
     },
+    // "column-4": {
+    //   id: "column-4",
+    //   title: "New Column",
+    //   card_ids: [1, 3, 4],
+    // },
   },
   columns_order: ["column-1", "column-2", "column-3"],
 };

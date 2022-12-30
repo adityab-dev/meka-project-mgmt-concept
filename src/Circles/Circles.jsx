@@ -4,6 +4,9 @@ import styles from "./Circles.module.css";
 
 function Circles(props) {
   const { circle_name, circle_color } = props;
+
+  if (!circle_name) return;
+
   const content = (
     <div className={styles.circle_container}>
       <div

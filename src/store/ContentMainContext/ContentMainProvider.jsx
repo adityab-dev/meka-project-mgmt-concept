@@ -118,6 +118,62 @@ const CardsReducer = (state, action) => {
 
     return new_state;
   }
+
+  if (action.type === "ADD_COLUMN") {
+    const title = action.payload;
+
+    const id = Math.random() * 100;
+
+    const new_column = {
+      [id]: {
+        id,
+        title,
+        card_ids: [],
+      },
+    };
+
+    const newState = {
+      ...state,
+      columns: {
+        ...state.columns,
+        ...new_column,
+      },
+      columns_order: [...state.columns_order, id],
+    };
+    console.log("newState", newState);
+    return newState;
+  }
+
+  if (action.type === "REMOVE_COLUMN") {
+    const id = action.payload;
+
+    const column_index = [...state.columns_order].findIndex(
+      (column_id) => {
+        return column_id === id;
+      }
+    );
+
+    const new_columns_order = [...state.columns_order];
+
+    new_columns_order.splice(column_index, 1);
+
+    const new_columns = {
+      ...state.columns,
+    };
+
+    delete new_columns.id;
+
+    const newState = {
+      ...state,
+      columns: {
+        ...state.columns,
+        ...new_columns,
+      },
+      columns_order: new_columns_order,
+    };
+
+    return newState;
+  }
   return defaultCardsState;
 };
 
@@ -126,6 +182,12 @@ const ContentMainProvider = (props) => {
     CardsReducer,
     defaultCardsState
   );
+
+  const columnRemoveHandler = (data) =>
+    DispatchCardsAction({ type: "REMOVE_COLUMN", payload: data });
+
+  const columnFormSubmitHandler = (data) =>
+    DispatchCardsAction({ type: "ADD_COLUMN", payload: data });
 
   const cardSubmitHandler = (data) =>
     DispatchCardsAction({ type: "ADD", payload: data });
@@ -141,6 +203,8 @@ const ContentMainProvider = (props) => {
     cardSubmitHandler,
     cardRemoveHandler,
     dragEndHandler,
+    columnFormSubmitHandler,
+    columnRemoveHandler,
   };
 
   return (

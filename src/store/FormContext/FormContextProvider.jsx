@@ -6,7 +6,7 @@ const defaultFormState = {
   tag: "",
   heading: "",
   description: "",
-  names: "",
+  names: [],
 };
 
 function FormContextProvider(props) {
@@ -15,40 +15,25 @@ function FormContextProvider(props) {
 
   const { column, onClose } = props;
 
-  const inputChangeHandler = (event) => {
-    console.log("value:-", event.target.value);
-    console.log("id:-", event.target.id);
-    dispatchFormAction({
-      type: "USER_INPUT",
-      payload: { value: event.taget.value, id: event.taget.id },
-    });
-  };
-
-  const clearFormHandler = () =>
-    dispatchFormAction({ type: "CLEAR_FORM" });
-
-  const onSubmit = (event) =>
-    dispatchFormAction({ type: "SUBMIT", payload: event });
-
   const reducerFunction = (state, action) => {
     if (action.type === "USER_INPUT") {
-      const { value, id } = action.payload;
+      const { id, value } = action.payload;
 
-      // since id === formState obj. key
-      const newInput = {
-        [id]: value,
-      };
+      if (id === "names") {
+        const newNames = [...state.names, value];
+        const newState = { ...state, names: newNames };
+        return newState;
+      }
 
-      const newState = {
-        ...state,
-        ...newInput,
-      };
-
+      const newState = { ...state, [id]: value };
       return newState;
     }
 
     if (action.type === "SUBMIT") {
-      action.payload.preventDefault();
+      const { tag, heading, description, names } = state;
+      const event = action.payload;
+
+      event.preventDefault();
 
       const id = Math.random() * 100;
 
@@ -60,42 +45,72 @@ function FormContextProvider(props) {
         const color = `rgb(${red}, ${blue}, ${green})`;
         return color;
       }
-
       const dot_color = randomColorGenerator();
-      const circle_color = randomColorGenerator();
 
-      const nameInitials = state.names;
+      function getInitials(name) {
+        if (!name.length) return;
 
-      function getInitiials(name) {
-        const nameArr = [...name];
-        const len = nameArr.length;
-        const itemsToRemove = len - 1;
-        nameArr.splice(0, itemsToRemove);
-        const capital = nameArr[0].toUpperCase();
-        nameArr[0] = capital;
-        return nameArr;
+        let firstLetter = "";
+        let secondLetter = "";
+
+        const indivisualElements = name.split(" ");
+        const indivisualNameFilter = (element) => {
+          if (element.length) {
+            return true;
+          }
+        };
+
+        const indivisualNames = indivisualElements.filter((el) => {
+          return indivisualNameFilter(el);
+        });
+
+        const len = indivisualNames.length;
+
+        const firstName = indivisualNames[0];
+        firstLetter = [...firstName][0];
+
+        if (len === 1) {
+          return firstLetter;
+        }
+
+        if (len > 1) {
+          const [secondName] = indivisualNames.splice(-1, 1);
+          secondLetter = [...secondName][0];
+
+          return firstLetter + secondLetter;
+        }
       }
 
-      const circle_name = getInitiials(nameInitials);
+      const nameInitialsArr = names.map((name) => getInitials(name));
+
+      const colors = names.map(() => randomColorGenerator());
 
       const formData = {
         id,
-        header_text: state.tag,
-        heading: state.heading,
-        main_text: state.description,
-        circle_names: circle_name,
+        header_text: tag,
+        heading,
+        main_text: description,
+        circle_names: nameInitialsArr,
         column_id: column.id,
         dot_color,
-        circle_colors: [circle_color],
+        circle_colors: colors,
       };
-
-      clearFormHandler();
 
       onClose();
       cardSubmitHandler(formData);
+
+      return defaultFormState;
     }
 
-    if (action.type === "CLEAR_FORM") return defaultFormState;
+    if (action.type === "ADD_NAMES") {
+      const event = action.payload;
+
+      event.preventDefault();
+
+      const name = event.target.value;
+      const newNames = [...state.names].push(name);
+      return { ...state, names: newNames };
+    }
 
     return defaultFormState;
   };
@@ -105,13 +120,28 @@ function FormContextProvider(props) {
     defaultFormState
   );
 
+  const inputChangeHandler = (event) =>
+    dispatchFormAction({
+      type: "USER_INPUT",
+      payload: { value: event.target.value, id: event.target.id },
+    });
+
+  const submitHandler = (event) =>
+    dispatchFormAction({ type: "SUBMIT", payload: event });
+
+  const addHandler = (event) =>
+    dispatchFormAction({
+      type: "ADD_NAMES",
+      payload: event,
+    });
+
   const formContextvalueProp = {
     formState,
     inputChangeHandler,
-    clearFormHandler,
     column,
     onClose,
-    onSubmit,
+    submitHandler,
+    addHandler,
   };
 
   return (

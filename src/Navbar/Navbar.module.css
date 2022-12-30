@@ -1,6 +1,5 @@
 .navbar {
-  /* box-sizing: border-box; */
-  width: 15vw;
+  width: 200px;
   height: 100vh;
 
   display: flex;

@@ -5,6 +5,8 @@ const ContentMainContext = React.createContext({
   cardSubmitHandler: () => {},
   cardRemoveHandler: () => {},
   dragEndHandler: () => {},
+  columnFormSubmitHandler: () => {},
+  columnRemoveHandler: () => {},
 });
 
 export default ContentMainContext;

@@ -5,7 +5,8 @@
 
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(10, 350px);
+  /* grid-auto-columns: 350px; */
 }
 
 /* aligns elements inside grid-col-1 */
